@@ -1,0 +1,64 @@
+name: Deploy IeNet Website
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+      
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.0'
+        
+    - name: Validate PHP syntax
+      run: |
+        find . -name "*.php" -exec php -l {} \;
+        
+    - name: Run basic tests
+      run: |
+        echo "Testing file structure..."
+        test -f index.php
+        test -f assets/css/style.css
+        test -f assets/js/main.js
+        test -d pages/services
+        echo "All tests passed!"
+        
+    - name: Deploy to GitHub Pages (Static)
+      if: github.ref == 'refs/heads/main'
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./
+        
+    # Uncomment and configure for FTP deployment
+    # - name: Deploy via FTP
+    #   if: github.ref == 'refs/heads/main'
+    #   uses: SamKirkland/FTP-Deploy-Action@4.3.3
+    #   with:
+    #     server: ${{ secrets.FTP_SERVER }}
+    #     username: ${{ secrets.FTP_USERNAME }}
+    #     password: ${{ secrets.FTP_PASSWORD }}
+    #     local-dir: ./
+    #     server-dir: /public_html/
+        
+    # Uncomment for SSH deployment
+    # - name: Deploy via SSH
+    #   if: github.ref == 'refs/heads/main'
+    #   uses: appleboy/ssh-action@v0.1.7
+    #   with:
+    #     host: ${{ secrets.HOST }}
+    #     username: ${{ secrets.USERNAME }}
+    #     key: ${{ secrets.KEY }}
+    #     script: |
+    #       cd /var/www/html
+    #       git pull origin main
+    #       sudo systemctl reload apache2
