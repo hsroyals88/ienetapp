@@ -1,0 +1,116 @@
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+logs/
+error_log
+access_log
+
+# Runtime data
+pids
+*.pid
+*.seed
+*.pid.lock
+
+# Dependency directories
+node_modules/
+vendor/
+
+# Environment variables
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Cache and temporary files
+*.cache
+*.tmp
+cache/
+tmp/
+temp/
+
+# Uploads and user-generated content
+uploads/
+user_uploads/
+
+# Configuration files with sensitive data
+config.php
+database.php
+*.conf
+
+# Backup files
+*.bak
+*.backup
+*.old
+
+# Compiled files
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+
+# Archives
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Build directories
+build/
+dist/
+
+# Package files
+*.tgz
+*.tar.gz
+
+# Local development files
+.htaccess.local
+robots.txt.local
+
+# Database files
+*.sql
+*.sqlite
+*.db
+
+# Error and access logs
+error.log
+access.log
+
+# PHP specific
+composer.phar
+composer.lock
+/vendor/
+
+# WordPress specific (if using)
+wp-config.php
+wp-content/uploads/
+wp-content/cache/
+
+# Temporary PHP files
+*.php~
+*.php.bak
+
+# Session files
+sessions/
+*.sess
